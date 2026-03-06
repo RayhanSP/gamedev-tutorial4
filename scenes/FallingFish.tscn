@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b118pvmscylk6"]
+
+[ext_resource type="Script" uid="uid://blpnouewtqu4j" path="res://rigid_body_2d.gd" id="1_o72ex"]
+[ext_resource type="Texture2D" uid="uid://bivk5n8i3vnqc" path="res://assets/kenney_platformerpack/PNG/Enemies/fishBlue.png" id="2_gccpt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_63e2e"]
+radius = 42.0
+height = 106.0
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=126044208]
+rotation = 3.3510323
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_o72ex")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1382248912]
+texture = ExtResource("2_gccpt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=577629888]
+shape = SubResource("CapsuleShape2D_63e2e")
+
+[connection signal="body_entered" from="." to="." method="_on_FallArea_body_entered"]
