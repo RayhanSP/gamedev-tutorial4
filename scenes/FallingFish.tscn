@@ -9,6 +9,7 @@ height = 106.0
 
 [node name="RigidBody2D" type="RigidBody2D" unique_id=126044208]
 rotation = 3.3510323
+gravity_scale = 0.579
 contact_monitor = true
 max_contacts_reported = 1
 script = ExtResource("1_o72ex")

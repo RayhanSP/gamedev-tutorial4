@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://bm4rfm2jkrx0n" path="res://scenes/spawner.gd" id="7_ecr63"]
 [ext_resource type="PackedScene" uid="uid://b118pvmscylk6" path="res://scenes/FallingFish.tscn" id="8_n34uq"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_odhdn"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ecr63"]
 texture = ExtResource("2_bwv4p")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
@@ -47,7 +47,7 @@ texture_region_size = Vector2i(128, 128)
 8:1/0 = 0
 8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ecr63"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n34uq"]
 texture = ExtResource("3_76388")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
@@ -123,7 +123,7 @@ texture_region_size = Vector2i(128, 128)
 2:15/0 = 0
 3:15/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n34uq"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kbo48"]
 texture = ExtResource("4_svatc")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
@@ -583,9 +583,9 @@ texture_region_size = Vector2i(128, 128)
 [sub_resource type="TileSet" id="TileSet_dw26h"]
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_odhdn")
-sources/1 = SubResource("TileSetAtlasSource_ecr63")
-sources/2 = SubResource("TileSetAtlasSource_n34uq")
+sources/0 = SubResource("TileSetAtlasSource_ecr63")
+sources/1 = SubResource("TileSetAtlasSource_n34uq")
+sources/2 = SubResource("TileSetAtlasSource_kbo48")
 
 [node name="Level1" type="Node2D" unique_id=1475839870]
 
@@ -605,7 +605,7 @@ texture = ExtResource("3_dw26h")
 [node name="Area2D" parent="Roketorat" unique_id=1088937634 instance=ExtResource("4_lrl65")]
 position = Vector2(0, 93.9)
 scale = Vector2(1.615, 1.615)
-sceneName = "WinScreen"
+sceneName = "Level2"
 
 [node name="TriggerJurangKiri" type="Sprite2D" parent="." unique_id=1870268939]
 
