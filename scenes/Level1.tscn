@@ -1,13 +1,14 @@
 [gd_scene format=4 uid="uid://yqmk0vpvnyxr"]
 
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1"]
-[ext_resource type="Texture2D" uid="uid://cluh2ekc38ktx" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_dirt.png" id="2_bwv4p"]
-[ext_resource type="Texture2D" uid="uid://c0c4avuoeqj5v" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_tiles.png" id="3_76388"]
-[ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="3_dw26h"]
+[ext_resource type="Texture2D" uid="uid://d4msnkm5nutok" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_dirt.png" id="2_bwv4p"]
+[ext_resource type="Texture2D" uid="uid://cmfkh81o7t0fm" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_tiles.png" id="3_76388"]
+[ext_resource type="Texture2D" uid="uid://tpq0ge2lruix" path="res://assets/Familiar Looking Rocket.png" id="3_dw26h"]
 [ext_resource type="PackedScene" uid="uid://cqntdxpl0oyu0" path="res://scenes/AreaTrigger.tscn" id="4_lrl65"]
-[ext_resource type="Texture2D" uid="uid://cdj4wrd0xwcmq" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_complete.png" id="4_svatc"]
+[ext_resource type="Texture2D" uid="uid://ceepuix6pjxiw" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_complete.png" id="4_svatc"]
 [ext_resource type="Script" uid="uid://bm4rfm2jkrx0n" path="res://scenes/spawner.gd" id="7_ecr63"]
 [ext_resource type="PackedScene" uid="uid://b118pvmscylk6" path="res://scenes/FallingFish.tscn" id="8_n34uq"]
+[ext_resource type="PackedScene" uid="uid://751ou282p0pr" path="res://scenes/LifeCounter.tscn" id="9_n34uq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ecr63"]
 texture = ExtResource("2_bwv4p")
@@ -621,6 +622,11 @@ rotation = 1.5707964
 scale = Vector2(5.68, 5.68)
 
 [node name="Spawner" type="Node2D" parent="." unique_id=712947414]
-position = Vector2(3494, -1420)
+position = Vector2(3455, 1016)
 script = ExtResource("7_ecr63")
 obstacle = ExtResource("8_n34uq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=463366930]
+
+[node name="LifeCounter" parent="CanvasLayer" unique_id=2139571563 instance=ExtResource("9_n34uq")]
+metadata/_edit_use_anchors_ = true

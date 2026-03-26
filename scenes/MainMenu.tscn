@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://bjrgilkw6m3gd"]
+
+[ext_resource type="FontFile" uid="uid://bpaegc6lsovqt" path="res://assets/Fonts/CC Wild Words Roman.ttf" id="1_2wh52"]
+[ext_resource type="Script" uid="uid://bxmnsbbk2e44x" path="res://scenes/link_button.gd" id="2_ow34m"]
+[ext_resource type="Texture2D" uid="uid://dwc8dd51xoi1h" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_alien.png" id="3_l72w3"]
+[ext_resource type="Script" uid="uid://wfx0tcho5db1" path="res://scenes/link_button_stageselect.gd" id="3_ow34m"]
+[ext_resource type="Script" uid="uid://d0b1yqq0vqe5h" path="res://scenes/animated_sprite_menu.gd" id="5_l72w3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_826wr"]
+atlas = ExtResource("3_l72w3")
+region = Rect2(256, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucygd"]
+atlas = ExtResource("3_l72w3")
+region = Rect2(384, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mipys"]
+atlas = ExtResource("3_l72w3")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a8k8"]
+atlas = ExtResource("3_l72w3")
+region = Rect2(128, 0, 128, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7la6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_826wr")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucygd")
+}],
+"loop": true,
+"name": &"stand",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mipys")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8a8k8")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="MainMenu" type="MarginContainer" unique_id=1104241106]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1300428178]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=2029926965]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 60
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1055273191]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_2wh52")
+theme_override_font_sizes/font_size = 75
+text = "ALIEN RUN"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=1019154114]
+layout_mode = 2
+
+[node name="LinkButton" type="LinkButton" parent="HBoxContainer/VBoxContainer/VBoxContainer" unique_id=198304669]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_2wh52")
+theme_override_font_sizes/font_size = 42
+text = "New Game"
+script = ExtResource("2_ow34m")
+scene_to_load = "Level1"
+
+[node name="LinkButton2" type="LinkButton" parent="HBoxContainer/VBoxContainer/VBoxContainer" unique_id=1111218468]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_2wh52")
+theme_override_font_sizes/font_size = 42
+text = "jump to stage 2"
+script = ExtResource("3_ow34m")
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer" unique_id=1120752633]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/CenterContainer" unique_id=1790071291]
+custom_minimum_size = Vector2(367.625, 214.54)
+layout_mode = 2
+texture = ExtResource("3_l72w3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1217031614]
+position = Vector2(123, 519)
+sprite_frames = SubResource("SpriteFrames_7la6k")
+animation = &"walk"
+autoplay = "walk"
+script = ExtResource("5_l72w3")
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton" to="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton" method="_on_New_Game_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton2" to="HBoxContainer/VBoxContainer/VBoxContainer/LinkButton2" method="_on_pressed"]

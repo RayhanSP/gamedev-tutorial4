@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bnqsrh78hf7s2"]
+
+[ext_resource type="FontFile" uid="uid://bpaegc6lsovqt" path="res://assets/Fonts/CC Wild Words Roman.ttf" id="1_8vl1a"]
+[ext_resource type="Script" uid="uid://byigg7bba47r0" path="res://scenes/link_button_gameover.gd" id="2_lj1s0"]
+
+[node name="Game Over" type="ColorRect" unique_id=207764952]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.42122298, 0, 0.049089283, 1)
+
+[node name="Label" type="Label" parent="." unique_id=1459128309]
+layout_mode = 0
+offset_left = 222.25
+offset_top = 264.485
+offset_right = 323.25024
+offset_bottom = 287.48505
+scale = Vector2(4.845, 4.845)
+text = "GAME OVER!!"
+
+[node name="LinkButton" type="LinkButton" parent="." unique_id=1127401082]
+layout_mode = 0
+offset_left = 227.405
+offset_top = 375.585
+offset_right = 413.40527
+offset_bottom = 415.58502
+scale = Vector2(2.805, 2.805)
+theme_override_fonts/font = ExtResource("1_8vl1a")
+text = "Return to main menu"
+script = ExtResource("2_lj1s0")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1450353579]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="LinkButton" to="LinkButton" method="_on_pressed"]

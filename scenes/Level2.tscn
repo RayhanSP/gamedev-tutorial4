@@ -1,18 +1,19 @@
 [gd_scene format=4 uid="uid://dyg3yqhjwuwxo"]
 
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1_qe5b6"]
-[ext_resource type="Texture2D" uid="uid://cluh2ekc38ktx" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_dirt.png" id="2_4p0dt"]
-[ext_resource type="Texture2D" uid="uid://c0c4avuoeqj5v" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_tiles.png" id="3_qwp14"]
-[ext_resource type="Texture2D" uid="uid://cdj4wrd0xwcmq" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_complete.png" id="4_xpq2v"]
-[ext_resource type="Texture2D" uid="uid://cela4hnu06pql" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_stone.png" id="5_0jmjk"]
-[ext_resource type="Texture2D" uid="uid://bj1n6tmjo3m57" path="res://assets/kenney_platformerpack/PNG/Tiles/bush.png" id="6_qwp14"]
+[ext_resource type="Texture2D" uid="uid://d4msnkm5nutok" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_dirt.png" id="2_4p0dt"]
+[ext_resource type="Texture2D" uid="uid://cmfkh81o7t0fm" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_tiles.png" id="3_qwp14"]
+[ext_resource type="Texture2D" uid="uid://ceepuix6pjxiw" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_complete.png" id="4_xpq2v"]
+[ext_resource type="Texture2D" uid="uid://msmxe20mrj5t" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_stone.png" id="5_0jmjk"]
+[ext_resource type="Texture2D" uid="uid://dkijasu2s4ke4" path="res://assets/kenney_platformerpack/PNG/Tiles/bush.png" id="6_qwp14"]
 [ext_resource type="PackedScene" uid="uid://cqntdxpl0oyu0" path="res://scenes/AreaTrigger.tscn" id="7_xpq2v"]
-[ext_resource type="Texture2D" uid="uid://ck0ig8j5crb78" path="res://assets/kenney_platformerpack/PNG/Tiles/signRight.png" id="8_xpq2v"]
-[ext_resource type="Texture2D" uid="uid://1ov08a1hyv04" path="res://assets/kenney_platformerpack/PNG/Tiles/grass.png" id="9_0jmjk"]
-[ext_resource type="Texture2D" uid="uid://pqqy2vvm231d" path="res://assets/kenney_platformerpack/PNG/Tiles/rock.png" id="9_3aekd"]
+[ext_resource type="Texture2D" uid="uid://cxheqeyr57dfu" path="res://assets/kenney_platformerpack/PNG/Tiles/signRight.png" id="8_xpq2v"]
+[ext_resource type="Texture2D" uid="uid://cbqtijbabj28v" path="res://assets/kenney_platformerpack/PNG/Tiles/grass.png" id="9_0jmjk"]
+[ext_resource type="Texture2D" uid="uid://djjhb6cleywp5" path="res://assets/kenney_platformerpack/PNG/Tiles/rock.png" id="9_3aekd"]
 [ext_resource type="Script" uid="uid://btg3gpen1e3m5" path="res://scenes/SpawnerLevel2.gd" id="10_v8268"]
-[ext_resource type="Texture2D" uid="uid://b45wpn13ajdj4" path="res://assets/kenney_platformerpack/PNG/Tiles/spikes.png" id="11_khw7m"]
+[ext_resource type="Texture2D" uid="uid://beayts01afdx4" path="res://assets/kenney_platformerpack/PNG/Tiles/spikes.png" id="11_khw7m"]
 [ext_resource type="PackedScene" uid="uid://7t3bw4l3pj0u" path="res://scenes/FallingThing.tscn" id="11_rcugv"]
+[ext_resource type="PackedScene" uid="uid://751ou282p0pr" path="res://scenes/LifeCounter.tscn" id="14_wd6ad"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v8268"]
 texture = ExtResource("2_4p0dt")
@@ -707,3 +708,8 @@ texture = ExtResource("9_0jmjk")
 position = Vector2(4534, 2697)
 script = ExtResource("10_v8268")
 obstacle = ExtResource("11_rcugv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1698029137]
+
+[node name="LifeCounter" parent="CanvasLayer" unique_id=2139571563 instance=ExtResource("14_wd6ad")]
+metadata/_edit_use_anchors_ = true
