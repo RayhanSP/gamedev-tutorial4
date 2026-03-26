@@ -1,42 +1,25 @@
-# Tutorial 4: Basic 2D Level Design
+# Tutorial 6: Menu & In-Game GUI
 
 **Nama** : Rayhan Syahdira Putra
 **NPM** : 2306275903
 
 ---
 
-Proses Pengerjaan Latihan Mandiri
-Pada Latihan Mandiri ini, saya membuat sebuah level baru (Level2.tscn) dengan berusaha memenuhi skema penilaian yang ada. Berikut adalah penjelasan  mengenai proses implementasinya:
+Proses Pengerjaan Tutorial dan Latihan Mandiri
+Pada tutorial kali ini, saya mengimplementasikan antarmuka pengguna (GUI) yang mencakup pembuatan layar menu utama, sistem nyawa (life counter), dan layar kondisi kalah (Game Over). Sesuai dengan instruksi, saya juga melengkapi pengerjaan dengan minimal 2 (dua) fitur tambahan sebagai bagian dari Latihan Mandiri. Berikut adalah penjelasan mengenai proses implementasinya:
 
-1. Level 2 dibangun menggunakan TileSet yang baru untuk memberikan visual yang berbeda. Pembuatan struktur level menggunakan node TileMapLayer yang telah diberikan Physics Layer secara presisi untuk memastikan karakter Player dapat berpijak dan berinteraksi dengan permukaan secara akurat.
+1. Layar utama (`MainMenu.tscn`) dibangun menggunakan root node `MarginContainer` dengan pengaturan Anchors Preset Full Rect agar ukurannya senantiasa menyesuaikan window. Tata letak elemen disusun secara hierarkis menggunakan `HBoxContainer` untuk membagi layar menjadi dua sisi, serta `VBoxContainer` dan `CenterContainer` untuk memusatkan teks dan gambar. Tipografi pada judul dan tombol diubah menggunakan properti `ThemeOverrides` dengan font eksternal. Navigasi antar scene ditangani oleh node `LinkButton` yang memanfaatkan signal `pressed()` untuk mengeksekusi fungsi `change_scene_to_file()`.
 
-2. Berbeda dengan obstacle ikan yang jatuh dari langit pada Level 1, rintangan pada Level 2 adalah roket rektorat yang melesat dari dasar jurang ke atas secara vertikal. Mekanisme ini dibangun dengan menggunakan root node RigidBody2D dengan nilai gravitasi yang telah disesuaikan agar objek dapat melesat ke atas. Node ini dilengkapi dengan Sprite2D dan CollisionShape2D sebagai visual dan kolisinya.
+2. Sistem nyawa diimplementasikan melalui penggunaan Global Variable (Autoload). Sebuah script bernama `Global.gd` dibuat untuk menyimpan variabel `lives = 3` secara permanen (persist) agar nilainya tidak ter-reset ketika scene permainan dimuat ulang. Indikator visual nyawa dibangun pada scene `LifeCounter.tscn` menggunakan `Label`, yang kemudian di-instantiate ke dalam level permainan (Level 1 dan Level 2) sebagai child dari node `CanvasLayer`. Logika penalti diatur pada script pemicu kematian (seperti area jatuh atau proyektil musuh) yang akan mengurangi nilai `Global.lives` sebesar 1 setiap kali Player berkolisi.
 
-Untuk spawnernya, menggunakan node Node2D (Spawner) yang ditempatkan secara tersembunyi di bawah level. Script Spawner dimodifikasi, misal titik instantiate ditetapkan statis dan objek didorong ke atas menggunakan manipulasi linear_velocity.
+3. Layar kondisi kalah (`Game Over.tscn`) dibuat menggunakan root node `ColorRect` untuk menutupi seluruh layar permainan dengan warna latar kustom. Scene ini akan dipanggil secara otomatis oleh sistem ketika variabel `Global.lives` menyentuh angka 0.
 
-Lose conditionnya memanfaatkan fitur Contact Monitor pada RigidBody2D serta Signals body_entered. Apabila roket berkolisi dengan node bernama "Player", script akan secara instan me-reload scene kembali ke titik awal menggunakan fungsi change_scene_to_file().
-
-Saya juga menambahkan obstacle duri untuk meningkatkan tantangan platforming. Rintangan ini dibangun dengan menyematkan AreaTrigger. Serupa dengan mekanisme area jurang, apabila node "Player" memasuki area kolisi duri tersebut, signal body_entered akan ketrigger dan memicu script untuk me-reset atau me-reload level secara instan.
-
-3. Kondisi menang diatur dengan menempatkan sebuah sprite semak (bush) di ujung area level.
-
-Sprite ini bertindak sebagai penanda visual yang menaungi node Area2D dan CollisionShape2D sebagai area trigger.
-
-Sistem Signal body_entered dihubungkan ke sebuah script yang bertugas memverifikasi objek yang masuk. Jika objek dikenali sebagai "Player", maka fungsi change_scene_to_file akan dipanggil untuk menampilkan scene kemenangan (WinScreen.tscn).
-
-4. Beberapa penyesuaian saya lakukan pada script bawaan tutorial.
-Kecepatan Jatuh (Level 1): Dilakukan penyesuaian pada parameter Gravity Scale node RigidBody2D milik rintangan ikan agar jatuh lebih lambat, sehingga mempermudah player dalam memainkannya (sebelum gravitasi ikan diperlambat, game saya serasa seperti Cat Mario yang gampang membuat player stres).
-
-Kecepatan Pergerakan (Player): Nilai variabel jump speed pada script player.gd dinaikkan agar pergerakan karakter terasa lebih lincah dan responsif saat bermanuver menghindari rintangan baru.
-
-
-Dalam kondisi menang Level 1, saya ganti menjadi reload ke Level 2, agar level Latihan Mandiri ini dapat berjalan seperti kelanjutan dari scene sebelumnya.
-
-
-
-
+4. Untuk Latihan Mandiri, saya mengimplementasikan tiga fitur tambahan untuk melengkapi menu dan GUI di dalam game:
+   * **Tombol Main Menu pada Layar Game Over:** Saya menambahkan `LinkButton` pada layar Game Over yang memungkinkan pemain kembali ke menu utama. Script pada tombol ini tidak hanya memuat `MainMenu.tscn`, tetapi juga secara eksplisit me-reset nilai `Global.lives` kembali menjadi 3 agar sesi permainan selanjutnya dapat berjalan normal.
+   * **Fitur Select Stage:** Saya mengaktifkan tombol "Stage Select" yang ada di Main Menu, namun saya rename menjadi "Jump to Stage 2" agar lebih bermakna. Tombol ini dihubungkan dengan script yang langsung mengarahkan pemain ke scene `Level 2.tscn` sembari memastikan nyawa berada dalam kondisi penuh.
+   * **Animasi Karakter Dinamis di Main Menu:** Sebagai bentuk eksplorasi kreatif, saya mengganti gambar aset alien yang statis di menu utama dengan node `AnimatedSprite2D`. Saya memotong spritesheet karakter menjadi animasi *walk*, *stand*, dan *jump*. Saya kemudian merancang script *state machine* sederhana menggunakan `randf_range` dan mekanisme gravitasi buatan agar karakter terlihat hidup—berjalan mengelilingi layar, berhenti sejenak, atau tiba-tiba melompat dengan pergerakan yang mulus dan natural.
 
 Referensi
-- Materi Tutorial 4 - Basic 2D Level Design, Mata Kuliah Game Development Fakultas Ilmu Komputer Universitas Indonesia.
-- Dokumentasi Resmi Godot Engine (v4.6) mengenai integrasi TileMapLayer, Area2D, RigidBody2D, dan Signals.
+- Materi Tutorial 6 - Menu and In-Game Graphical User Interface, Mata Kuliah Game Development Fakultas Ilmu Komputer Universitas Indonesia.
+- Dokumentasi Resmi Godot Engine (v4.6) mengenai integrasi UI Containers, Global Variables (Autoload), dan AnimatedSprite2D.
 - Kenney Platformer Pack Assets.
